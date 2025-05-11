@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.gabrieltoledo.kito.application.usecases.user.CreateUserUseCase;
 import dev.gabrieltoledo.kito.web.dtos.request.CreateUserDTO;
+import dev.gabrieltoledo.kito.web.dtos.response.UserResponseDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +20,7 @@ public class UserController {
     private final CreateUserUseCase createUserUseCase;
 
     @PostMapping
-    public ResponseEntity<Object> create(@Valid @RequestBody CreateUserDTO user) {
+    public ResponseEntity<UserResponseDTO> create(@Valid @RequestBody CreateUserDTO user) {
         var response = createUserUseCase.execute(user);
 
         return ResponseEntity.ok(response);
