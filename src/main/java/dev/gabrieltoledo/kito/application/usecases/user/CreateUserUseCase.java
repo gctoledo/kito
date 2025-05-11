@@ -31,8 +31,6 @@ public class CreateUserUseCase {
 
         var createdUser = this.userRepository.save(UserEntity.newInstance(domain));
 
-        var dsadas = createdUser.toDomain();
-
-        return mapper.toResponse(dsadas);
+        return mapper.toResponse(createdUser.toDomain());
     }
 }
