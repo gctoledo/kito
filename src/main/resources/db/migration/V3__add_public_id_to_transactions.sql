@@ -1,0 +1,2 @@
+ALTER TABLE transactions
+ADD COLUMN public_id UUID NOT NULL UNIQUE;
