@@ -3,6 +3,7 @@ package dev.gabrieltoledo.kito.infrastructure.entities;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -41,6 +42,9 @@ public class TransactionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "public_id", nullable = false)
+    private UUID publicId;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_method", nullable = false)
     private PaymentMethod paymentMethod;
@@ -71,7 +75,7 @@ public class TransactionEntity {
     private Instant updatedAt;
 
     public Transaction toDomain() {
-        return new Transaction(id, paymentMethod, transactionType, description, transactionDate, amount,
+        return new Transaction(id, publicId, paymentMethod, transactionType, description, transactionDate, amount,
                 user.toDomain(), createdAt, updatedAt);
     }
 
@@ -79,6 +83,7 @@ public class TransactionEntity {
 
         return new TransactionEntity(
                 transaction.getId(),
+                transaction.getPublicId(),
                 transaction.getPaymentMethod(),
                 transaction.getTransactionType(),
                 transaction.getDescription(),
