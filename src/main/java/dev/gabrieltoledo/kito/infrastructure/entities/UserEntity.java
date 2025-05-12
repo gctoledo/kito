@@ -8,7 +8,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import dev.gabrieltoledo.kito.domain.models.Transaction;
 import dev.gabrieltoledo.kito.domain.models.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -57,31 +56,17 @@ public class UserEntity {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
-    private List<Transaction> toDomainTransactions() {
-
-        if (transactions != null) {
-            return transactions.stream().map(TransactionEntity::toDomain).toList();
-        }
-
-        return null;
-    }
-
     public User toDomain() {
-        return new User(id, name, email, password, toDomainTransactions(), createdAt, updatedAt);
+        return new User(id, name, email, password, createdAt, updatedAt);
     }
 
     public static UserEntity newInstance(User user) {
-
         return new UserEntity(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getTransactions() != null
-                        ? user.getTransactions().stream()
-                                .map(TransactionEntity::newInstance)
-                                .toList()
-                        : null,
+                null,
                 user.getCreatedAt(),
                 user.getUpdatedAt());
     }

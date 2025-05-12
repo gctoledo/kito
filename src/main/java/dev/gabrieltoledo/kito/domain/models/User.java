@@ -1,7 +1,6 @@
 package dev.gabrieltoledo.kito.domain.models;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.UUID;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +20,6 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private List<Transaction> transactions;
     private Instant createdAt;
     private Instant updatedAt;
 }

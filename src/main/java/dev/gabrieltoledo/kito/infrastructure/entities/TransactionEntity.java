@@ -17,7 +17,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -62,7 +61,7 @@ public class TransactionEntity {
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal amount;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
@@ -80,7 +79,7 @@ public class TransactionEntity {
     }
 
     public static TransactionEntity newInstance(Transaction transaction) {
-
+        UserEntity userEntity = UserEntity.newInstance(transaction.getUser());
         return new TransactionEntity(
                 transaction.getId(),
                 transaction.getPublicId(),
@@ -89,7 +88,7 @@ public class TransactionEntity {
                 transaction.getDescription(),
                 transaction.getTransactionDate(),
                 transaction.getAmount(),
-                UserEntity.newInstance(transaction.getUser()),
+                userEntity,
                 transaction.getCreatedAt(),
                 transaction.getUpdatedAt());
     }

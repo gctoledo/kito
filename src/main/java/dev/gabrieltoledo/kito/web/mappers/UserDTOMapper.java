@@ -9,7 +9,7 @@ import dev.gabrieltoledo.kito.web.dtos.response.UserResponseDTO;
 @Mapper(componentModel = "spring")
 public interface UserDTOMapper {
     default User toDomain(CreateUserDTO dto) {
-        return new User(null, dto.name(), dto.email(), dto.password(), null, null, null);
+        return new User(null, dto.name(), dto.email(), dto.password(), null, null);
     }
 
     UserResponseDTO toResponse(User user);
