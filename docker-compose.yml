@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: kito-db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - kito-net
+
+  app:
+    build: .
+    container_name: kito-api
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - postgres
+    networks:
+      - kito-net
+
+volumes:
+  pgdata:
+
+
+networks:
+  kito-net:
