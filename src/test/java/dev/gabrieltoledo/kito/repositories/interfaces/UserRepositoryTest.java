@@ -31,13 +31,9 @@ public class UserRepositoryTest {
     @Test
     @DisplayName("Should save and find user by id")
     void shouldSaveAndFindUserById() {
-        User user = new User();
-        user.setName("John Doe");
-        user.setEmail("john@doe.com");
-        user.setPassword("123456");
-        user.setRole(UserRole.USER);
+        User user = new User(null, "John Doe", "john@doe.com", "password", UserRole.USER, null, null, null);
 
-        User createdUser = userRepository.save(user);;
+        User createdUser = userRepository.save(user);
 
         Optional<User> found = userRepository.findById(createdUser.getId());
 
@@ -49,11 +45,7 @@ public class UserRepositoryTest {
     @Test
     @DisplayName("Should find user by email")
     void shouldFindUserByEmail() {
-        User user = new User();
-        user.setName("John Doe");
-        user.setEmail("john@doe.com");
-        user.setPassword("senha123");
-        user.setRole(UserRole.USER);
+        User user = new User(null, "John Doe", "john@doe.com", "password", UserRole.USER, null, null, null);
 
         userRepository.save(user);
 

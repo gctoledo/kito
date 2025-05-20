@@ -1,7 +1,5 @@
 package dev.gabrieltoledo.kito.web.dtos.request;
 
-import dev.gabrieltoledo.kito.domain.user.User;
-import dev.gabrieltoledo.kito.domain.user.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -24,8 +22,4 @@ public class CreateUserRequest {
     @NotBlank(message = "The password is required")
     @Size(min = 8, max = 255, message = "Password must be at least 8 characters")
     private final String password;
-
-    public User toDomain() {
-        return new User(null, this.name, this.email, this.password, UserRole.USER, null, null, null);
-    }
 }
