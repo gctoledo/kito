@@ -14,6 +14,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import dev.gabrieltoledo.kito.domain.user.User;
+import dev.gabrieltoledo.kito.domain.user.UserRole;
 
 @DataJpaTest
 @Testcontainers
@@ -34,6 +35,7 @@ public class UserRepositoryTest {
         user.setName("John Doe");
         user.setEmail("john@doe.com");
         user.setPassword("123456");
+        user.setRole(UserRole.USER);
 
         User createdUser = userRepository.save(user);;
 
@@ -51,6 +53,7 @@ public class UserRepositoryTest {
         user.setName("John Doe");
         user.setEmail("john@doe.com");
         user.setPassword("senha123");
+        user.setRole(UserRole.USER);
 
         userRepository.save(user);
 
