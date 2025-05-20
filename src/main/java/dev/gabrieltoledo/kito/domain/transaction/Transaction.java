@@ -21,6 +21,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +30,7 @@ import lombok.NoArgsConstructor;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @NoArgsConstructor
+@EqualsAndHashCode(of = { "id", "publicId" })
 public class Transaction {
 
     public Transaction(Long id, UUID publicId, PaymentMethod paymentMethod, TransactionType transactionType,
