@@ -5,25 +5,13 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import dev.gabrieltoledo.kito.domain.user.User;
 import dev.gabrieltoledo.kito.domain.user.UserRole;
+import dev.gabrieltoledo.kito.web.common.BaseRepositoryTest;
 
-@DataJpaTest
-@Testcontainers
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UserRepositoryTest {
-
-    @Container
-    @ServiceConnection
-    static PostgreSQLContainer<?> db = new PostgreSQLContainer<>("postgres:16");
+public class UserRepositoryTest extends BaseRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
