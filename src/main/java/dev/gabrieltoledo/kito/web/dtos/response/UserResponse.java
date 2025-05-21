@@ -3,7 +3,6 @@ package dev.gabrieltoledo.kito.web.dtos.response;
 import java.time.Instant;
 import java.util.UUID;
 
-import dev.gabrieltoledo.kito.domain.user.User;
 import dev.gabrieltoledo.kito.domain.user.UserRole;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,14 +16,13 @@ public class UserResponse {
     private UserRole role;
     private Instant createdAt;
 
-    public static UserResponse build(User user) {
+    public static UserResponse build(UUID id, String name, String email, UserRole role, Instant createdAt) {
         UserResponse userResponse = new UserResponse();
-
-        userResponse.setId(user.getId());
-        userResponse.setName(user.getName());
-        userResponse.setEmail(user.getEmail());
-        userResponse.setRole(user.getRole());
-        userResponse.setCreatedAt(user.getCreatedAt());
+        userResponse.setId(id);
+        userResponse.setName(name);
+        userResponse.setEmail(email);
+        userResponse.setRole(role);
+        userResponse.setCreatedAt(createdAt);
 
         return userResponse;
     }

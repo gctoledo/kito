@@ -29,6 +29,6 @@ public class CreateUserUseCase {
 
         User createdUser = this.userRepository.save(domain);
 
-        return UserResponse.build(createdUser);
+        return UserResponse.build(createdUser.getId(), createdUser.getName(), createdUser.getEmail(), createdUser.getRole(), createdUser.getCreatedAt());
     }
 }
