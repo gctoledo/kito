@@ -10,16 +10,16 @@ import lombok.Getter;
 @Getter
 public class CreateUserRequest {
 
-    @NotBlank(message = "First name is required")
-    @Size(min = 3, max = 100, message = "First name must between 3 and 100 characters")
+    @NotBlank(message = "Name is required")
+    @Size(min = 3, max = 100, message = "Name must between 3 and 100 characters")
     private final String name;
 
-    @NotBlank(message = "The email is required")
+    @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     @Size(max = 255, message = "Email must be at most 255 characters")
     private final String email;
 
-    @NotBlank(message = "The password is required")
+    @NotBlank(message = "Password is required")
     @Size(min = 8, max = 255, message = "Password must be at least 8 characters")
     private final String password;
 }
