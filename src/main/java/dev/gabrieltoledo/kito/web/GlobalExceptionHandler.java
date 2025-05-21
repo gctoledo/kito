@@ -1,4 +1,4 @@
-package dev.gabrieltoledo.kito.web.controllers;
+package dev.gabrieltoledo.kito.web;
 
 import java.util.List;
 
