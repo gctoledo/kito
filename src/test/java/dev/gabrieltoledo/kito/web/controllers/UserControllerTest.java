@@ -20,12 +20,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dev.gabrieltoledo.kito.application.exceptions.EmailAlreadyExistsException;
 import dev.gabrieltoledo.kito.application.usecases.user.CreateUserUseCase;
+import dev.gabrieltoledo.kito.web.common.BaseControllerTest;
 import dev.gabrieltoledo.kito.web.dtos.request.CreateUserRequest;
 import dev.gabrieltoledo.kito.web.dtos.response.UserResponse;
 
 @WebMvcTest(UserController.class)
 @AutoConfigureMockMvc(addFilters = false)
-public class UserControllerTest {
+public class UserControllerTest extends BaseControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
