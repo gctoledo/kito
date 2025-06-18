@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dev.gabrieltoledo.kito.application.exceptions.EmailAlreadyExistsException;
 import dev.gabrieltoledo.kito.application.usecases.user.CreateUserUseCase;
-import dev.gabrieltoledo.kito.web.common.BaseControllerTest;
+import dev.gabrieltoledo.kito.common.BaseControllerTest;
 import dev.gabrieltoledo.kito.web.dtos.request.CreateUserRequest;
 import dev.gabrieltoledo.kito.web.dtos.response.UserResponse;
 

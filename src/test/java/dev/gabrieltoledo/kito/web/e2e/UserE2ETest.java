@@ -1,4 +1,4 @@
-package dev.gabrieltoledo.kito.web;
+package dev.gabrieltoledo.kito.web.e2e;
 
 import java.util.UUID;
 
@@ -10,16 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import dev.gabrieltoledo.kito.web.dtos.request.CreateUserRequest;
 import dev.gabrieltoledo.kito.web.dtos.response.UserResponse;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
-public class IntegrationTest {
+@Testcontainers
+public class UserE2ETest {
+
+    @Container
+    @ServiceConnection
+    static PostgreSQLContainer<?> db = new PostgreSQLContainer<>("postgres:16");
 
     @LocalServerPort
     private int port;

@@ -1,4 +1,4 @@
-package dev.gabrieltoledo.kito.web.common;
+package dev.gabrieltoledo.kito.common;
 
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

@@ -7,9 +7,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import dev.gabrieltoledo.kito.common.BaseRepositoryTest;
 import dev.gabrieltoledo.kito.domain.user.User;
 import dev.gabrieltoledo.kito.domain.user.UserRole;
-import dev.gabrieltoledo.kito.web.common.BaseRepositoryTest;
 
 public class UserRepositoryTest extends BaseRepositoryTest {
 

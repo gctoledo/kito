@@ -1,4 +1,4 @@
-package dev.gabrieltoledo.kito.web.common;
+package dev.gabrieltoledo.kito.common;
 
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Import;
